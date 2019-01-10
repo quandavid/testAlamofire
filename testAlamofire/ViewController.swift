@@ -17,10 +17,7 @@ class ViewController: UIViewController {
         let destination = DownloadRequest.suggestedDownloadDestination()
         
         Alamofire.download(urlRequest, to: destination).response { response in // method defaults to `.get`
-            print(response.request ?? "")
-            print(response.response ?? "")
-            print(response.temporaryURL ?? "")
-            print(response.destinationURL ?? "")
+            
             let data = try? Data(contentsOf: response.destinationURL!)
             self.imageView.image = UIImage(data: data!)
             print(response.error ?? "")
